@@ -1,0 +1,61 @@
+---
+const faqs = [
+  {
+    q: 'What is a self-hosted alternative to Perspective API?',
+    a: 'ExtraComments is a self-hosted moderation API that you deploy on your own infrastructure using Docker Compose. It accepts the same request and response format as Perspective API, so existing integrations work with a URL change.',
+  },
+  {
+    q: 'When does Perspective API shut down?',
+    a: 'Google has announced Perspective API will shut down on December 31, 2026. Any system currently calling the Perspective API will stop receiving moderation scores after that date.',
+  },
+  {
+    q: 'Does ExtraComments work with Artalk?',
+    a: 'Yes. ExtraComments ships a native Artalk plugin that integrates directly with the Artalk comment system. No custom code required on your end.',
+  },
+  {
+    q: 'Does ExtraComments work with Remark42?',
+    a: 'A Remark42 plugin is in progress and will ship shortly after the initial release. Any Remark42 install can also call ExtraComments directly via the REST API in the meantime.',
+  },
+  {
+    q: 'Is ExtraComments GDPR compliant?',
+    a: 'Because ExtraComments runs on your own infrastructure, comment text never leaves your servers. You remain the data controller and processor. No third-party DPA required for the moderation layer.',
+  },
+  {
+    q: 'How much does self-hosted comment moderation cost?',
+    a: 'ExtraComments starts at $500/year per site. Three tiers are available for different speed, quality, and cost profiles. Contact us for a quote matching your comment volume and requirements.',
+  },
+  {
+    q: 'Can I migrate from Perspective API to ExtraComments?',
+    a: 'Yes. ExtraComments implements the Perspective API endpoint shape — change the base URL in your config and your existing integration works without code changes. Migration is a config edit, not a project.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+
+<section class="px-6 py-16 max-w-3xl mx-auto">
+  <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-50 text-center mb-12">
+    Frequently asked questions
+  </h2>
+  <dl class="space-y-8">
+    {faqs.map((faq) => (
+      <div class="border-b border-stone-800 pb-8 last:border-0">
+        <dt class="text-stone-50 font-semibold text-lg mb-3">{faq.q}</dt>
+        <dd class="text-stone-400 leading-relaxed">{faq.a}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

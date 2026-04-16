@@ -1,0 +1,42 @@
+---
+const integrations = [
+  {
+    name: 'Artalk',
+    description: 'Native plugin. Drop ExtraComments behind your existing Artalk install.',
+    status: 'Phase 1',
+  },
+  {
+    name: 'Remark42',
+    description: 'Plugin port in progress. Same integration pattern as Artalk.',
+    status: 'Coming soon',
+  },
+  {
+    name: 'REST API',
+    description: 'Any comment system can call ExtraComments directly via a Perspective-compatible REST API.',
+    status: 'Phase 1',
+  },
+];
+---
+<section class="px-6 py-16 max-w-5xl mx-auto">
+  <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-50 text-center mb-4">
+    Integrations
+  </h2>
+  <p class="text-stone-400 text-center mb-12 max-w-xl mx-auto">
+    Works with any system that currently calls Perspective API — swap the endpoint URL and you're done.
+  </p>
+  <div class="grid sm:grid-cols-3 gap-6">
+    {integrations.map((i) => (
+      <div class="border border-stone-800 rounded-xl p-6 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-stone-50">{i.name}</span>
+          <span class={`text-xs px-2 py-0.5 rounded-full border ${
+            i.status === 'Phase 1'
+              ? 'border-amber-500/40 text-amber-400 bg-amber-500/10'
+              : 'border-stone-700 text-stone-500'
+          }`}>{i.status}</span>
+        </div>
+        <p class="text-stone-400 text-sm leading-relaxed">{i.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

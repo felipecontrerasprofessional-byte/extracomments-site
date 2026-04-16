@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://extracomments.com/sitemap-index.xml
